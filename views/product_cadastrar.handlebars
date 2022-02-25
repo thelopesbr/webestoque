@@ -1,0 +1,45 @@
+ <div class="container-logo">
+      <h1 class="logo">
+        <a href="/?token={{token}}">Web <span>Estoque</span></a>
+      </h1>
+    </div>
+    <div class="center">
+      <div class="container">
+        <form class="container-login" action="/product/{{id}}" method="POST">
+          <div class="container-login-title">
+            <h2 class="title">Cadastrar produto</h2>
+          </div>
+          <div class="container-login-email">
+            <label for="email">Nome</label>
+            <input type="text" name="name" id="name" value="{{name}}"required />
+          </div>
+          <div class="container-login-email">
+            <label for="email">Quantidade</label>
+            <input type="number" name="qtd" id="qtd"  value="{{qtd}}" required />
+          </div>
+          <div class="container-login-email">
+            <label for="email">Quantidade Mínima</label>
+            <input type="number" name="qtd_min" id="qtd_min"  value="{{qtd_min}}" required />
+          </div>
+          <div class="container-login-email">
+            <label for="email">Quantidade Máxima</label>
+            <input type="number" name="qtd_max" id="qtd_max"  value="{{qtd_max}}" required />
+          </div>
+          <div class="container-login-button">
+            {{#if put}}
+              <input type="submit" value="Atualizar" class="button" />
+            {{else}}
+                <input type="submit" value="Cadastrar" class="button" />
+            {{/if}}
+          </div>
+          <div class="container-login-forgot">
+            <h3 class="forgot-password">
+              <a href="/?token={{token}}">Voltar</a>
+            </h3>
+          </div>
+        <input type="text" name="company_id" id="company_id"  placeholder="Codigo da empresa" value="{{company_id}}" hidden readonly><br><br>
+        <input type="text" name="token" id="token"  value="{{token}}" hidden readonly>
+        </form>
+    </div>
+  </div>
+</div> 

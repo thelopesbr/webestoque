@@ -1,0 +1,15 @@
+
+<div class="main_state">
+    {{alert}}
+    <img class="personagem" src="https://cdn.discordapp.com/attachments/714573856613859339/814543708997025822/boneco.gif"/>
+    <h3>Status API: {{message.API_Status}}</h3>
+    <h3>Status da Database: {{message.Database_Status}}</h3> 
+    <form action="/state/start/" method="get">
+            <input type="password" name="token" id="token" required>
+            <div style="flex-direction: column;">
+                <button class="buttonDesign" type="submit">Iniciar</button>
+                <button class="buttonDesign" onclick="location.href = '/';">Home</button>   
+            </div> 
+    </form>
+</div>
+

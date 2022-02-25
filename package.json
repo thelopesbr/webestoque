@@ -1,0 +1,36 @@
+{
+  "name": "estoqueweb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./server/server.js",
+  "scripts": {
+    "dev": "nodemon server/server.js",
+    "start": "node .",
+    "migrate": "node-pg-migrate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@handlebars/allow-prototype-access": "^1.0.5",
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.7",
+    "connect-flash": "^0.1.1",
+    "cookie-session": "^2.0.0",
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "express-handlebars": "^5.3.0",
+    "fs": "^0.0.1-security",
+    "handlebars": "^4.7.7",
+    "is-svg": "^4.3.2",
+    "jsonwebtoken": "^8.5.1",
+    "node-pg-migrate": "^6.2.1",
+    "pg": "^8.7.1",
+    "pg-promise": "^10.11.1",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "cors": "^2.8.5",
+    "nodemon": "^2.0.15"
+  }
+}

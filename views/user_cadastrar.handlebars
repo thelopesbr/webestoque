@@ -1,0 +1,51 @@
+<div class="container-logo">
+      <h1 class="logo">
+         {{#if admin}}
+              <a href="/admin/?token={{token}}">Web <span>Estoque</span></a>
+            {{else}}
+             <a href="/?token={{token}}">Web <span>Estoque</span></a>
+            {{/if}}
+      </h1>
+    </div>
+    <div class="center">
+        <div class="container">
+      <form class="container-login" action="/user/{{id}}?admin={{admin}}" method="POST">
+        <div class="container-login-title">
+          <h2 class="title">Cadastrar usuário</h2>
+        </div>
+        <div class="container-login-email">
+          <label for="email">E-mail</label>
+          <input type="email" name="email" id="email" value="{{email}}"required />
+        </div>
+        <div class="container-login-email">
+          <label for="password">Senha</label>
+          <input type="password" name="password" id="password" required />
+        </div>
+        <div class="container-login-email">
+          <label for="name">Nome da Empresa</label>
+          <input type="text" name="name" id="name" value="{{name}}" required />
+        </div>
+        <div class="container-login-button">
+          {{#if put}}
+            <input type="submit" value="Atualizar" class="button" />
+          {{else}}
+              <input type="submit" value="Cadastrar" class="button" />
+          {{/if}}
+        </div>
+        <div class="container-login-forgot">
+          <h3 class="forgot-password">
+            {{#if admin}}
+              <a href="/admin/?token={{token}}&admin=true">Voltar</a>
+            {{else}}
+              <a href="/?token={{token}}">Voltar</a>
+            {{/if}}
+          </h3>
+        </div>
+        <input type="text" name="company_id" id="company_id"  placeholder="Codigo da empresa" value="{{company_id}}" hidden readonly>
+        <input type="text" name="token" id="token"  value="{{token}}" hidden readonly>
+      </form>
+    </div>
+    
+</div>
+  
+   

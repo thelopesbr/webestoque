@@ -1,0 +1,6 @@
+{
+  "db": {
+      "migration-filename-format": "utc",
+      "migrations-dir": "./database/migrations"
+  }
+}

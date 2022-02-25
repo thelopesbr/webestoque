@@ -1,0 +1,53 @@
+
+<div class="container--master">  
+  {{#if message}}
+  <div id="card" class="container_message">
+  {{message}}
+  </div>
+  {{/if}}
+   <div class="buttons">
+    <a href="/product/?token={{token}}">Cadastrar produto</a>
+    <a href="/user/{{user}}?company_id={{company_id}}&token={{token}}">Editar
+      usuario</a>
+    <a
+      href="/admin/company/remove/{{company_id}}?logout=true&token={{token}}"
+    >Cancelar assinatura</a>
+  </div>
+  <table class="table">
+    <thead>
+      <th>Nome</th>
+      <th>Status</th>
+      <th>Quantidade</th>
+      <th>Minimo</th>
+      <th>Maximo</th>
+      <th style="text-align: center">Opções</th>
+    </thead>
+    {{#each product}}
+      <tbody>
+        <tr>
+          <td>
+            <a href="/product/{{id}}?token={{token}}">{{name}}</a>
+          </td>
+          <td>{{status}}</td>
+          <td>{{qtd}}</td>
+          <td>{{qtd_min}}</td>
+          <td>{{qtd_max}}</td>
+          <td class="options">
+            <a
+              href="/product/remove/{{id}}?token={{token}}"
+              class="material-icons"
+            >delete</a>
+            <a
+              href="/product/add/{{id}}?token={{token}}"
+              class="material-icons"
+            >add</a>
+            <a
+              href="/product/lower/{{id}}?token={{token}}"
+              class="material-icons"
+            >remove</a>
+          </td>
+        </tr>
+      </tbody>
+    {{/each}}
+  </table>
+</div>

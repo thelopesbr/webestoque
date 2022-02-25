@@ -1,0 +1,47 @@
+.main_state { 
+    border-radius: 0.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.main_state form {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.buttons_nick {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonDesign {
+   
+   
+    margin: 1rem 0;
+    padding: 0.75rem 2rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    font-weight: bold;
+    outline: none;
+    color: #ffffff;
+    text-align: center;
+    background-color: #7289DA;;
+}
+
+.buttonDesign:nth-child(3) {
+    margin: 0;
+}
+
+#token {
+    margin-top: 0.5rem;
+}

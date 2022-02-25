@@ -1,0 +1,38 @@
+<div class="container--admin">
+  {{#if message}}
+  <div id="card" class="container_message">
+  {{message}}
+  </div>
+  {{/if}}
+
+  <a href="/admin/company?token={{token}}" class="company--button"> Cadastrar Empresa</a>
+  <table class="table_admin">
+    <thead>
+      <th>Nome</th>
+      <th>CNPJ</th>
+      <th style="text-align: center">Opções</th>
+    </thead>
+    <tbody>
+    {{#each company}}
+      <tr>
+        <td>
+          <a href="/admin/company/{{id}}?token={{token}}" class="company--name">{{name}}</a>
+        </td>
+        <td>{{cnpj}}</td>
+        <td class="icons" style="text-align: center">
+          <a
+            href="/admin/company/remove/{{id}}?token={{token}}"
+            class="material-icons"
+            >delete</a
+          >
+          <a
+            href="/user?company_id={{id}}&token={{token}}&admin=true"
+            class="material-icons"
+            >add</a
+          >
+        </td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</div>

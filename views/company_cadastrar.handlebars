@@ -1,0 +1,40 @@
+
+<div class="container-logo">
+      <h1 class="logo">
+        <a href="/admin?token={{token}}">Web <span>Estoque</span></a>
+      </h1>
+    </div>
+    <div class="center">
+          <div class="container">
+                <form class="container-login" action="/admin/company/{{id}}" method="POST">
+                  <div class="container-login-title">
+                    <h2 class="title">Cadastrar empresa</h2>
+                  </div>
+                  <div class="container-login-email">
+                    <label for="name">Nome da Empresa</label>
+                    <input type="text" name="name" id="name" value="{{name}}" required />
+                  </div>
+                  <div class="container-login-email">
+                    <label for="cpnj">CNPJ</label>
+                    <input type="number" name="cnpj" id="cnpj" value="{{cnpj}}" required />
+                  </div>
+                  <div class="container-login-button">
+                    {{#if put}}
+                      <input type="submit" value="Atualizar" class="button" />
+                    {{else}}
+                        <input type="submit" value="Cadastrar" class="button" />
+                    {{/if}}
+                  </div>
+                  <div class="container-login-forgot">
+                    <h3 class="forgot-password">
+                      <a href="/admin?token={{token}}">Voltar</a>
+                    </h3>
+                  </div>
+                <input type="text" name="token" id="token" value="{{token}}" hidden="true" readonly> 
+                </form>
+            </div>
+    </div>
+</div>
+
+
+   
