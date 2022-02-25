@@ -5,6 +5,7 @@ exports.get  = async function ( req, res, next ) {
         return res.render('contact', {login: true});
     }
     catch( err ){
-        return res.render('error')
+        req.flash('message', '❌It was not possible to send the email')
+        return res.redirect('/login');
     }
 }

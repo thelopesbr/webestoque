@@ -15,7 +15,7 @@ exports.get = async function() {
         return new ResponseDTO('Success', 200, '', message)
     }
     catch(err){
-        return new ResponseDTO('Error', 500, 'Error accessing database',message);
+        return new ResponseDTO('Error', 500, '❌Error accessing database',message);
     }
 }
 
@@ -28,6 +28,6 @@ exports.start = async function() {
         return new ResponseDTO('Success', 200, '')
     }
     catch(err){
-        return new ResponseDTO('Error', 500, 'Error accessing database',err.stack);
+        return new ResponseDTO('Error', 500, '❌Error accessing database',err.stack);
     }
 }

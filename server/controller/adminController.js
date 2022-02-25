@@ -36,6 +36,7 @@ exports.put = async function (req, res, next) {
 
     if (response.type === 'Success'){
         req.flash('token', req.token)
+        req.flash('message', response.message)
         return res.redirect('/admin');
     } else{
         req.flash('token', req.token);
@@ -62,12 +63,12 @@ exports.getById = async function (req, res, next) {
         });
         } else{
             req.flash('token', req.token);
-            req.flash('message', 'Company does not exist');
+            req.flash('message', '❌Company does not exist');
             return res.redirect('/admin');
         }
        
     }catch(err){
-        const response = new ResponseDTO('Error', 500, 'Error accessing database',err.stack);
+        const response = new ResponseDTO('Error', 500, '❌Error accessing database',err.stack);
         req.flash('token', req.token);
         req.flash('message', response.message)
         return res.redirect('/admin');
@@ -76,13 +77,12 @@ exports.getById = async function (req, res, next) {
 
 exports.getCompany = async function (req, res, next) {
    
-    const token = req.token
-    const message = req.flash('message');
+    const token = req.token;
     try{
         return res.render('company_cadastrar', {token: token});
         
-    }catch{
-        new ResponseDTO('Error', 500, 'Error accessing database',err.stack);
+    }catch(err){
+        const response = new ResponseDTO('Error', 500, '❌Error accessing database',err.stack);
         req.flash('token', req.token);
         req.flash('message', response.message)
         return res.redirect('/admin');
@@ -101,6 +101,7 @@ exports.post = async function (req, res, next) {
 
     if (response.type === 'Success'){
         req.flash('token', req.token)
+        req.flash('message', response.message)
         return res.redirect('/admin');
     } else{
         req.flash('token', req.token)
@@ -122,6 +123,7 @@ exports.delete = async function (req, res, next) {
         }
         else{
             req.flash('token', req.token)
+            req.flash('message', response.message)
             return res.redirect('/admin');
         }
     } else{

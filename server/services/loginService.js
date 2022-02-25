@@ -27,18 +27,18 @@ exports.post = async function(login,password) {
     }).catch(function (err) {return err});
 
     if (valid.name === 'ValidationError' || valid.name === 'TypeError') {
-      return new ResponseDTO('Error', 400, 'The data entered is not valid', valid.errors)
+      return new ResponseDTO('Error', 400, '❌The data entered is not valid', valid.errors)
   }
     const user = await loginData.getUser(login);
    
     if(!user){
-      return new ResponseDTO('Error', 404, 'User does not exist. check credentials.')
+      return new ResponseDTO('Error', 404, '❌User does not exist. check credentials.')
     }
     
     const passwordMatches = await compare(password, user.password)
 
     if(!passwordMatches){
-      return new ResponseDTO('Error', 401, 'Credentials are invalid.')
+      return new ResponseDTO('Error', 401, '❌Credentials are invalid.')
     }
     
     delete user.password
@@ -51,10 +51,10 @@ exports.post = async function(login,password) {
       { expiresIn: '1d' }
       );
     
-    return new ResponseDTO('Success', 202, 'Login successfully', {user, token})
+    return new ResponseDTO('Success', 202, '✔️Login successfully', {user, token})
   } 
 
   catch(err){
-    return new ResponseDTO('Error', 500, 'Error accessing database.', err.stack)
+    return new ResponseDTO('Error', 500, '❌Error accessing database.', err.stack)
   }
 }

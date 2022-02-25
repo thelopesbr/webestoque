@@ -8,7 +8,7 @@ exports.format = (req, res, next) => {
     const token = req.flash('token')[0] || req.query.token || req.body.token
     jwt.verify(token, config.secret, (err, decoded) => {
         if(err){
-            const response = new ResponseDTO('Error',401,'Token invalid');
+            const response = new ResponseDTO('Error',401,'❌Token invalid');
             return res.status(response.status).redirect('/login');
         } 
         
@@ -25,7 +25,7 @@ exports.start = (req, res , next) => {
     const token = req.query.token
     jwt.verify(token, config.secret, (err, decoded) => {
         if(err){
-            const response = new ResponseDTO('Error',401,'Token invalid');
+            const response = new ResponseDTO('Error',401,'❌Token invalid');
             req.flash('alert',response.message)
             return  res.status(response.status).redirect('/state')
         } 

@@ -21,7 +21,9 @@ exports.get  = async function ( req, res, next ) {
   if (response.type === 'Success') {
     return res.render('home', {product: product, company_id: company_id, user: id,  message: message, token: token })
   } else{
-    return res.redirect('/error', response);
+        req.flash('token', req.token);
+        req.flash('message', response.message)
+        return res.redirect('/');
   }
 }
 exports.post = async function (req, res, next) {

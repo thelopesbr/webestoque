@@ -18,17 +18,17 @@ exports.getUserByEmail = async function(email, id) {
     const response = await userData.getUserByEmail(email)
     try {
         if (!id && response.length == 0) {
-            return new ResponseDTO('Success', 200, 'User not found');
+            return new ResponseDTO('Success', 200, '✔️User not found');
         }
         else if(id && response.length == 1 &&  response[0].id == id) {
-            return new ResponseDTO('Success', 200, 'User not found');
+            return new ResponseDTO('Success', 200, '✔️User not found');
         }   
         else{
-            return new ResponseDTO('Error', 409, 'Email are already in use');
+            return new ResponseDTO('Error', 409, '❌Email are already in use');
         }
     }
     catch (err) {
-        return new ResponseDTO('Error', 500, 'Error accessing database', err.stack)   
+        return new ResponseDTO('Error', 500, '❌Error accessing database', err.stack)   
     }
 }
 
@@ -41,11 +41,11 @@ exports.getById = async function(id) {
             return new ResponseDTO('Success', 200,'', user);
         }
         else{
-            return new ResponseDTO('Error', 404, 'User does not exist')
+            return new ResponseDTO('Error', 404, '❌User does not exist')
         }
     }
     catch(err){
-        return new ResponseDTO('Error', 500, 'Error accessing database',err.stack);
+        return new ResponseDTO('Error', 500, '❌Error accessing database',err.stack);
     }
 }
 
@@ -64,7 +64,7 @@ exports.post = async function(user) {
           }).catch(function (err) {return err});
      
           if (valid.name === 'ValidationError' || valid.name === 'TypeError') {
-            return new ResponseDTO('Error', 400, 'The data entered is not valid', valid.errors)
+            return new ResponseDTO('Error', 400, '❌The data entered is not valid', valid.errors)
         }
 
         const validator = await exports.getUserByEmail(user.email);
@@ -77,10 +77,10 @@ exports.post = async function(user) {
         user.password = await bcrypt.hash(user.password, 10)
        
         const data = await userData.postUser(user);
-        return new ResponseDTO('Success', 201, 'Successfully registered user.', data);
+        return new ResponseDTO('Success', 201, '✔️Successfully registered user.', data);
     }
     catch(err){
-        return new ResponseDTO('Error', 500, 'Error accessing database',err.stack);
+        return new ResponseDTO('Error', 500, '❌Error accessing database',err.stack);
     }
 }
 
@@ -101,7 +101,7 @@ exports.put = async function(id, user) {
               }).catch(function (err) {return err});
 
             if (valid.name === 'ValidationError' || valid.name === 'TypeError') {
-                return new ResponseDTO('Error', 400, 'The data entered is not valid', valid.errors)
+                return new ResponseDTO('Error', 400, '❌The data entered is not valid', valid.errors)
             }
             const validator = await exports.getUserByEmail(verifyUser.email, id);
             
@@ -115,14 +115,14 @@ exports.put = async function(id, user) {
            
 
             await userData.putUser(id,user.name, user.password, user.email);
-            return new ResponseDTO('Success', 202, 'User updated successfully.', await userData.getById(id))
+            return new ResponseDTO('Success', 202, '✔️User updated successfully.', await userData.getById(id))
         }
         else{
-            return new ResponseDTO('Error', 404, 'Error updating user.', 'User does not exist');
+            return new ResponseDTO('Error', 404, '❌Error updating user.', 'User does not exist');
         }
     }
     catch(err){
-        return new ResponseDTO('Error', 500, 'Error accessing database.',err.stack);
+        return new ResponseDTO('Error', 500, '❌Error accessing database.',err.stack);
     }
 
 }
@@ -130,25 +130,25 @@ exports.put = async function(id, user) {
 exports.delete = async function(id) {
     try{
         if(!id){
-            return new ResponseDTO('Error', 400, 'Error deleting user', 'Did not enter all necessary data.')
+            return new ResponseDTO('Error', 400, '❌Error deleting user', 'Did not enter all necessary data.')
         }
 
         const user = await userData.verifyUser(id);
         
         if(user){
             if(!user.delete){
-                return new ResponseDTO('Error', 400, 'Error deleting user.', 'This user cannot be deleted.');
+                return new ResponseDTO('Error', 400, '❌Error deleting user.', 'This user cannot be deleted.');
             }
             await userData.deleteUser(id);
-            return new ResponseDTO('Success', 200, 'User deleted successfully.')
+            return new ResponseDTO('Success', 200, '✔️User deleted successfully.')
         }
         else{
-            return new ResponseDTO('Error', 404, 'Error deleting user.', 'User does not exist');
+            return new ResponseDTO('Error', 404, '❌Error deleting user.', 'User does not exist');
         }
        
     }
     catch(err){
-        return new ResponseDTO('Error', 500, 'Error accessing database.',err.stack);
+        return new ResponseDTO('Error', 500, '❌Error accessing database.',err.stack);
     }
 }
 

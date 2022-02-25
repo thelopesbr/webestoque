@@ -22,11 +22,11 @@ exports.getById = async function(id) {
             return new ResponseDTO('Success', 200,'', produtc);
         }
         else{
-            return new ResponseDTO('Error', 404, 'Product does not exist')
+            return new ResponseDTO('Error', 404, '❌Product does not exist')
         }
     }
     catch(err){
-        return new ResponseDTO('Error', 500, 'Error accessing database',err.stack);
+        return new ResponseDTO('Error', 500, '❌Error accessing database',err.stack);
     }
 }
 
@@ -44,7 +44,7 @@ exports.post = async function(product) {
           }).catch(function (err) {return err});
 
         if (valid.name === 'ValidationError' || valid.name === 'TypeError') {
-            return new ResponseDTO('Error', 400, 'The data entered is not valid', valid.errors)
+            return new ResponseDTO('Error', 400, '❌The data entered is not valid', valid.errors)
         }
         else if(qtd_min > qtd_max){
             return new ResponseDTO('Error', 400, 'Invalid amounts')
@@ -65,16 +65,16 @@ exports.post = async function(product) {
                 status = '🔵'
             }
             const data = await productData.post(name,status,qtd,qtd_min,qtd_max,company_id);
-            return new ResponseDTO('Success', 201, 'Successfully registered product.', data);
+            return new ResponseDTO('Success', 201, '✔️Successfully registered product.', data);
         }
         else{
-            return new ResponseDTO('Error', 404, 'Company does not exist')
+            return new ResponseDTO('Error', 404, '❌Company does not exist')
         }
         
         
     }
     catch(err){
-        return new ResponseDTO('Error', 500, 'Error accessing database',err.stack);
+        return new ResponseDTO('Error', 500, '❌Error accessing database',err.stack);
     }
 }
 exports.put = async function(id,product) {
@@ -94,10 +94,10 @@ exports.put = async function(id,product) {
             }).catch(function (err) {return err});
 
             if (valid.name === 'ValidationError' || valid.name === 'TypeError') {
-                return new ResponseDTO('Error', 400, 'The data entered is not valid', valid.errors)
+                return new ResponseDTO('Error', 400, '❌The data entered is not valid', valid.errors)
             }
             else if(qtd_min >= qtd_max){
-                return new ResponseDTO('Error', 400, 'Invalid amounts')
+                return new ResponseDTO('Error', 400, '❌Invalid amounts')
             }
         
             if(qtd > qtd_min && qtd < qtd_max){
@@ -113,36 +113,36 @@ exports.put = async function(id,product) {
                     status = '🔵'
             }
             const data = await productData.put(id,name,status,qtd,qtd_min,qtd_max,company_id);
-            return new ResponseDTO('Success', 200, 'Successfully update product.', data);  
+            return new ResponseDTO('Success', 200, '✔️Successfully update product.', data);  
         }
         else{
-            return new ResponseDTO('Error', 404, 'Product does not exist', data); 
+            return new ResponseDTO('Error', 404, '❌Product does not exist', data); 
         }
     }
     catch(err){
-        return new ResponseDTO('Error', 500, 'Error accessing database',err.stack);
+        return new ResponseDTO('Error', 500, '❌Error accessing database',err.stack);
     }
 }
 
 exports.delete = async function(id) {
     try{
         if(!id){
-            return new ResponseDTO('Error', 400, 'Error deleting company.', 'Did not inform all the necessary data.')
+            return new ResponseDTO('Error', 400, '❌Error deleting company.', 'Did not inform all the necessary data.')
         }
         
         const product = await productData.getById(id);
         
         if(product){
           await productData.delete(id);
-          return new ResponseDTO('Success', 200, 'Successfully deleted product.', product);
+          return new ResponseDTO('Success', 200, '✔️Successfully deleted product.', product);
         }
         else{
-            return new ResponseDTO('Error', 404, 'Error deleting product.', 'product does not exist');
+            return new ResponseDTO('Error', 404, '❌Error deleting product.', 'product does not exist');
         }
        
     }
     catch(err){
-        return new ResponseDTO('Error', 500, 'Error accessing database',err.stack);
+        return new ResponseDTO('Error', 500, '❌Error accessing database',err.stack);
     }
 }
 
@@ -167,10 +167,10 @@ exports.lower = async function (id) {
             }).catch(function (err) {return err});
 
             if (valid.name === 'ValidationError' || valid.name === 'TypeError') {
-                return new ResponseDTO('Error', 400, 'The data entered is not valid', valid.errors)
+                return new ResponseDTO('Error', 400, '❌The data entered is not valid', valid.errors)
             }
             else if(qtd_min >= qtd_max || qtd== 0){
-                return new ResponseDTO('Error', 400, 'Invalid amounts')
+                return new ResponseDTO('Error', 400, '❌Invalid amounts')
             }
         
             if(newQtd > qtd_min && newQtd < qtd_max){
@@ -186,14 +186,14 @@ exports.lower = async function (id) {
                     status = '🔵'
             }
             await productData.put(id,name,status,newQtd,qtd_min,qtd_max,company_id);
-            return new ResponseDTO('Success', 200, 'Successfully update product.', product);  
+            return new ResponseDTO('Success', 200, '✔️Successfully update product.', product);  
         }
         else{
-            return new ResponseDTO('Error', 404, 'Product does not exist', data); 
+            return new ResponseDTO('Error', 404, '❌Product does not exist', data); 
         }
     }
     catch(err){
-        return new ResponseDTO('Error', 500, 'Error accessing database',err.stack);
+        return new ResponseDTO('Error', 500, '❌Error accessing database',err.stack);
     }
 }
 
@@ -217,10 +217,10 @@ exports.add = async function (id) {
             }).catch(function (err) {return err});
 
             if (valid.name === 'ValidationError' || valid.name === 'TypeError') {
-                return new ResponseDTO('Error', 400, 'The data entered is not valid', valid.errors)
+                return new ResponseDTO('Error', 400, '❌The data entered is not valid', valid.errors)
             }
             else if(qtd_min >= qtd_max){
-                return new ResponseDTO('Error', 400, 'Invalid amounts')
+                return new ResponseDTO('Error', 400, '❌Invalid amounts')
             }
         
             if(newQtd > qtd_min && newQtd < qtd_max){
@@ -236,14 +236,14 @@ exports.add = async function (id) {
                     status = '🔵'
             }
             await productData.put(id,name,status,newQtd,qtd_min,qtd_max,company_id);
-            return new ResponseDTO('Success', 200, 'Successfully update product.', product);  
+            return new ResponseDTO('Success', 200, '✔️Successfully update product.', product);  
         }
         else{
-            return new ResponseDTO('Error', 404, 'Product does not exist', data); 
+            return new ResponseDTO('Error', 404, '❌Product does not exist', data); 
         }
     }
     catch(err){
-        return new ResponseDTO('Error', 500, 'Error accessing database',err.stack);
+        return new ResponseDTO('Error', 500, '❌Error accessing database',err.stack);
     }
 }
 

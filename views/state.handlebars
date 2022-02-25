@@ -1,6 +1,10 @@
 
 <div class="main_state">
-    {{alert}}
+    {{#if alert}}
+        <div id="card" class="container_message">
+            {{alert}}
+        </div>
+    {{/if}}
     <img class="personagem" src="https://cdn.discordapp.com/attachments/714573856613859339/814543708997025822/boneco.gif"/>
     <h3>Status API: {{message.API_Status}}</h3>
     <h3>Status da Database: {{message.Database_Status}}</h3> 
