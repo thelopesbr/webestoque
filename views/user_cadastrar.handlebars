@@ -2,16 +2,20 @@
       <h1 class="logo">
          {{#if admin}}
               <a href="/admin/?token={{token}}">Web <span>Estoque</span></a>
-            {{else}}
+          {{else}}
              <a href="/?token={{token}}">Web <span>Estoque</span></a>
-            {{/if}}
+          {{/if}}
       </h1>
     </div>
     <div class="center">
         <div class="container">
       <form class="container-login" action="/user/{{id}}?admin={{admin}}" method="POST">
         <div class="container-login-title">
-          <h2 class="title">Cadastrar usuário</h2>
+          {{#if put}}
+              <h2 class="title">Atualizar usuário</h2>
+          {{else}}
+              <h2 class="title">Cadastrar usuário</h2>
+          {{/if}}
         </div>
         <div class="container-login-email">
           <label for="email">E-mail</label>

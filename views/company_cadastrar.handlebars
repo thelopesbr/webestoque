@@ -8,7 +8,12 @@
           <div class="container">
                 <form class="container-login" action="/admin/company/{{id}}" method="POST">
                   <div class="container-login-title">
-                    <h2 class="title">Cadastrar empresa</h2>
+                    {{#if put}}
+                      <h2 class="title">Atualizar empresa</h2>
+                    {{else}}
+                        <h2 class="title">Cadastrar empresa</h2>
+                    {{/if}}
+                   
                   </div>
                   <div class="container-login-email">
                     <label for="name">Nome da Empresa</label>

@@ -7,7 +7,12 @@
       <div class="container">
         <form class="container-login" action="/product/{{id}}" method="POST">
           <div class="container-login-title">
-            <h2 class="title">Cadastrar produto</h2>
+            {{#if put}}
+               <h2 class="title">Atualizar produto</h2>
+            {{else}}
+               <h2 class="title">Cadastrar produto</h2>
+            {{/if}}
+    
           </div>
           <div class="container-login-email">
             <label for="email">Nome</label>
